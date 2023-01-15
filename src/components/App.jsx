@@ -8,7 +8,6 @@ import { Layout } from './Layout';
 export function App() {
   const error = useSelector(getError);
   const isLoading = useSelector(getIsLoading);
-  console.log(isLoading);
   return (
     <Layout>
       <h1>Phonebook</h1>
