@@ -11,8 +11,6 @@ export const selectError = state => state.contacts.error;
 export const selectVisiblePhone = createSelector(
   [selectContacts, selectFilter],
   (contacts, filters) => {
-    console.log('Calculating task count');
-
     const normalizedFilter = filters.toLowerCase();
     if (contacts === []) {
       return;
