@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
 import { fetchPhones, AddContact, DeleteContact } from './operations';
 
 const handlePending = state => {
