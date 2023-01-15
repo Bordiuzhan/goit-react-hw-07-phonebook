@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Form, Label, Btn } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { AddContact, fetchPhones } from 'redux/operations';
+import { addContact, fetchPhones } from 'redux/operations';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -36,7 +36,7 @@ export const ContactForm = () => {
         return alert(`${name} is alredy in contacts`);
       }
     }
-    dispatch(AddContact({ name, phone: number }));
+    dispatch(addContact({ name, phone: number }));
     setName('');
     setNumber('');
   };
