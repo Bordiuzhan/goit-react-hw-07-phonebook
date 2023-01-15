@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Form, Label, Btn } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { addContact, fetchPhones } from 'redux/operations';
 
 export const ContactForm = () => {
@@ -13,7 +13,7 @@ export const ContactForm = () => {
   useEffect(() => {
     dispatch(fetchPhones());
   }, [dispatch]);
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
