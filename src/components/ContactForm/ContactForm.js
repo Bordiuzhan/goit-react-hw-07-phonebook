@@ -1,15 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Label, Btn } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
 import { nanoid } from '@reduxjs/toolkit';
+import { AddContact, fetchPhones } from 'redux/operations';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPhones());
+  }, [dispatch]);
   const contacts = useSelector(getContacts);
 
   const handleChange = e => {
@@ -33,7 +38,7 @@ export const ContactForm = () => {
         return alert(`${name} is alredy in contacts`);
       }
     }
-    dispatch(addContact({ id: nanoid(), name, number }));
+    dispatch(AddContact({ name, phone: number }));
     setName('');
     setNumber('');
   };
